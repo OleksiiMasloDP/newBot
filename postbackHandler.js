@@ -12,12 +12,14 @@ module.exports = function postbackHandler (sender_psid, received_postback) {
         response = {"text": "Thanks!"}
     } else if (payload === 'no') {
         response = {"text": "Oops, try sending another image."}
-    } else if(payload === 'sample_get_started_payload') {
-        response = {
-            "text": 'Lets start'
-        }
     } else if (payload === 'lets_start') {
         response = letStartHelper();
+    } else if (payload === 'MAIN_MENU') {
+        response = letStartHelper();
+    } else if (payload === 'CATALOG') {
+        response = {
+
+        }
     }
     // Send the message to acknowledge the postback
     callSendAPI(sender_psid, response);

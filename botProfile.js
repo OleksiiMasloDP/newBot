@@ -1,6 +1,6 @@
 const request = require('request');
 
-module.exports = function () {
+module.exports = function (sender_psid) {
     const request_body = {
         "get_started": {"payload": "lets_start"}
     };
@@ -25,23 +25,16 @@ module.exports = function () {
                 "locale":"default",
                 "composer_input_disabled": true,
                 "call_to_actions":[
-                    {
-                        "title":"My Account",
-                        "type":"nested",
-                        "call_to_actions":[
                             {
-                                "title":"Pay Bill",
                                 "type":"postback",
-                                "payload":"PAYBILL_PAYLOAD"
+                                "title":"Главное меню",
+                                "payload":"MAIN_MENU"
                             },
                             {
-                                "type":"web_url",
-                                "title":"Latest News",
-                                "url":"https://www.messenger.com/",
-                                "webview_height_ratio":"full"
+                                "type":"postback",
+                                "title":"Каталог товаров",
+                                "payload":"CATALOG"
                             }
-                        ]
-                    }
                 ]
             }
         ]
@@ -59,6 +52,33 @@ module.exports = function () {
         }
         else {
             console.error("Unable to configure menu:" + err);
+        }
+    });
+    const greeting = {
+        "get_started": {"payload": "lets_start"},
+        "greeting": [
+            {
+                "locale":"default",
+                "text":"Hello {{user_first_name}}!"
+            }, {
+                "locale":"en_US",
+                "text":"Timeless apparel for the masses."
+            }
+        ]
+    };
+    request({
+        "uri": "https://graph.facebook.com/v3.2/me/messenger_profile",
+        "qs": {"access_token": process.env.page_token},
+        "method": "POST",
+        "json": greeting
+    }, (err, res, body) => {
+        if (
+            !err
+        ) {
+            console.log('Greeting configured')
+        }
+        else {
+            console.error("Unable to configure greeting:" + err);
         }
     });
 };
