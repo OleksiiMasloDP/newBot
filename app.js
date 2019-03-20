@@ -14,7 +14,7 @@ env(__dirname + '/.env');
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 botProfile();
-app.post('/', function (req, res) {
+app.post('/webhook', function (req, res) {
     const body = req.body;
 
     if (body.object === 'page') {
@@ -48,7 +48,7 @@ app.post('/', function (req, res) {
         res.sendStatus(404);
     }
 });
-app.get('/', function (req, res) {
+app.get('/webhook', function (req, res) {
 
     const VERIFY_TOKEN = "webhook_oleksiidp_chatbot";
 
