@@ -1,12 +1,14 @@
-const request = require('request');
+const request = require('request'),
+    config = require("./config");
 
-module.exports = function (sender_psid) {
+
+    module.exports = function (sender_psid) {
     const request_body = {
         "get_started": {"payload": "lets_start"}
     };
     request({
         "uri": "https://graph.facebook.com/v3.2/me/messenger_profile",
-        "qs": {"access_token": process.env.page_token},
+        "qs": {"access_token": config.pageToken},
         "method": "POST",
         "json": request_body
     }, (err, res, body) => {
@@ -41,7 +43,7 @@ module.exports = function (sender_psid) {
     };
     request({
         "uri": "https://graph.facebook.com/v3.2/me/messenger_profile",
-        "qs": {"access_token": process.env.page_token},
+        "qs": {"access_token": config.pageToken},
         "method": "POST",
         "json": menu_request_body
     }, (err, res, body) => {
@@ -68,7 +70,7 @@ module.exports = function (sender_psid) {
     };
     request({
         "uri": "https://graph.facebook.com/v3.2/me/messenger_profile",
-        "qs": {"access_token": process.env.page_token},
+        "qs": {"access_token": config.pageToken},
         "method": "POST",
         "json": greeting
     }, (err, res, body) => {

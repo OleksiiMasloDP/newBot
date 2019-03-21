@@ -1,4 +1,5 @@
-const request = require('request');
+const request = require('request'),
+    config = require("./config");
 
 module.exports = function callSendAPI(sender_psid, response) {
     // Construct the message body
@@ -12,7 +13,7 @@ module.exports = function callSendAPI(sender_psid, response) {
     // Send the HTTP request to the Messenger Platform
     request({
         "uri": "https://graph.facebook.com/v3.2/me/messages",
-        "qs": {"access_token": process.env.page_token},
+        "qs": {"access_token": config.pageToken},
         "method": "POST",
         "json": request_body
     }, (err, res, body) => {

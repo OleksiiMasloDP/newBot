@@ -8,17 +8,11 @@ const
     handleMessage = require('./messageHandler'),
     handlePostback = require('./postbackHandler'),
     botProfile = require("./botProfile"),
-    app = express().use(bodyParser.json()), // creates express http server
-    env = require('node-env-file');
-
-try {
-    env(__dirname + '/.env');
-} catch (e) {
-    console.log("Cant load environment"+e)
-}
+    config = require("./config"),
+    app = express().use(bodyParser.json()); // creates express http server
 
 // Sets server port and logs message on success
-app.listen(process.env.PORT, () => console.log('webhook is listening'));
+app.listen(config.port, () => console.log('webhook is listening'));
 botProfile();
 app.post('/webhook', function (req, res) {
     const body = req.body;
@@ -56,7 +50,7 @@ app.post('/webhook', function (req, res) {
 });
 app.get('/webhook', function (req, res) {
 
-    const VERIFY_TOKEN = "webhook_oleksiidp_chatbot";
+    const VERIFY_TOKEN = config.verifyToken;
 
 // Parse params from the webhook verification request
     let mode = req.query['hub.mode'];
