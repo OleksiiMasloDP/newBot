@@ -9,16 +9,14 @@ const
     handlePostback = require('./postbackHandler'),
     botProfile = require("./botProfile"),
     app = express().use(bodyParser.json()), // creates express http server
-    aws = require('aws-sdk');
+    env = require('node-env-file');
 
-// env = require('node-env-file');
-//env(__dirname + '/.env');
+try {
+    env(__dirname + '/.env');
+} catch (e) {
+    console.log("Cant load environment"+e)
+}
 
-let heroku = new aws.heroku({
-    accessPageToken: process.env.PAGE_TOKEN,
-    accessVerifyToken: process.env.VERIFY_TOKEN,
-    port: process.env.PORT
-});
 // Sets server port and logs message on success
 app.listen(process.env.PORT, () => console.log('webhook is listening'));
 botProfile();
