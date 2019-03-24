@@ -15,8 +15,9 @@ module.exports = function postbackHandler (sender_psid, received_postback) {
     } else if (payload === 'lets_start') {
         response = letStartHelper();
     } else if (payload === 'MAIN_MENU') {
-        response = letStartHelper();
-    } else if (payload === 'CATALOG') {
+        response = {
+
+        }    } else if (payload === 'CATALOG') {
         response = {
 
         }

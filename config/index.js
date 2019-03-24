@@ -9,7 +9,8 @@ try {
 const config = {
     port: process.env.PORT,
     verifyToken: process.env.VERIFY_TOKEN,
-    pageToken: process.env.PAGE_TOKEN
+    pageToken: process.env.PAGE_TOKEN,
+    bestBuyToken: process.env.BBY_API_KEY
 };
 
 if(!config.port){
@@ -20,5 +21,8 @@ if(!config.pageToken){
 }
 if(!config.verifyToken){
     throw new Error("Cant find VERIFY_TOKEN variable")
+}
+if(!config.bestBuyToken){
+    throw new Error("Cant find BBY_API_KEY variable")
 }
 module.exports = config;
