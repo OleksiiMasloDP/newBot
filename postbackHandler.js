@@ -1,7 +1,8 @@
 const callSendAPI = require('./callbackHandler'),
-    letStartHelper = require ('./helpers/letStartHelper');
+    letStartHelper = require('./helpers/letStartHelper'),
+    shopListHelper = require('./helpers/shopListHelper');
 
-module.exports = function postbackHandler (sender_psid, received_postback) {
+module.exports = function postbackHandler(sender_psid, received_postback) {
     let response;
 
     // Get the payload for the postback
@@ -15,13 +16,16 @@ module.exports = function postbackHandler (sender_psid, received_postback) {
     } else if (payload === 'lets_start') {
         response = letStartHelper();
     } else if (payload === 'MAIN_MENU') {
-        response = {
-
-        }    } else if (payload === 'CATALOG') {
-        response = {
-
-        }
+        response = letStartHelper();
+    } else if (payload === 'CATALOG') {
+        catalogHelper(function (err, response) {
+            callSendAPI(sender_psid, response);
+        });
+        return;
+    } else if (payload === 'SHOP') {
+        response = shopListHelper();
     }
+
     // Send the message to acknowledge the postback
     callSendAPI(sender_psid, response);
 };
