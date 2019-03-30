@@ -1,10 +1,17 @@
-module.exports = function (callbackFromHelper) {
-
+const prepareCategories = function (obj, callback) {
+    for (let i = 0; i < obj.lenght; i++) {
+        console.log(obj[i]);
+    }
+    const respones = {};
+    callback(null, response)
+};
+module.export.prepareCategories = prepareCategories;
+module.export.handle = function (callbackFromHelper) {
     const async = require('async');
     async.waterfall([
         function (callback) {
             const bby = require('bestbuy')();
-            bby.categories('', {pageSize: 1}, function (err, data) {
+            bby.categories('', {pageSize: 10}, function (err, data) {
                 if (err) {
                     console.warn(err);
                     callback(err, null)
@@ -18,13 +25,14 @@ module.exports = function (callbackFromHelper) {
                 }
             });
         },
-        function (obj, callback) {
+        prepareCategories
+        /*function (obj, callback) {
             for (let i = 0; i < obj.length; i++) {
                 console.log(obj[i]);
             }
             const response = {};
             callback(null, response)
-        }
+        }*/
     ], function (err, result) {
         callbackFromHelper(err, result)
     });

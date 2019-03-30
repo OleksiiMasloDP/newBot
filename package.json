@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.2",
     "bestbuy": "^2.1.3",
     "body-parser": "^1.18.3",
     "botkit": "^0.7.4",

@@ -1,6 +1,7 @@
 const callSendAPI = require('./callbackHandler'),
     letStartHelper = require('./helpers/letStartHelper'),
-    shopListHelper = require('./helpers/shopListHelper');
+    shopListHelper = require('./helpers/shopListHelper'),
+    catalogHelper = require('./helpers/catalogHelper');
 
 module.exports = function postbackHandler(sender_psid, received_postback) {
     let response;
@@ -18,7 +19,7 @@ module.exports = function postbackHandler(sender_psid, received_postback) {
     } else if (payload === 'MAIN_MENU') {
         response = letStartHelper();
     } else if (payload === 'CATALOG') {
-        catalogHelper(function (err, response) {
+        catalogHelper.handle(function (err, response) {
             callSendAPI(sender_psid, response);
         });
         return;

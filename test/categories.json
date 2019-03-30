@@ -1,0 +1,183 @@
+{
+  "from": 1,
+  "to": 1,
+  "currentPage": 1,
+  "total": 4041,
+  "totalPages": 4041,
+  "queryTime": "0.024",
+  "totalTime": "0.030",
+  "partial": false,
+  "canonicalUrl": "/v1/categories?pageSize=1&format=json&apiKey=",
+  "categories": [
+    {
+      "id": "abcat0010000",
+      "name": "Gift Ideas",
+      "active": true,
+      "url": "https://www.bestbuy.com/site/electronics/gift-ideas/abcat0010000.c?id=abcat0010000&cmp=RMX-cat",
+      "path": [
+        {
+          "id": "cat00000",
+          "name": "Best Buy"
+        },
+        {
+          "id": "abcat0010000",
+          "name": "Gift Ideas"
+        }
+      ],
+      "subCategories": [
+        {
+          "id": "pcmcat1496256957402",
+          "name": "Top Tech Gifts"
+        },
+        {
+          "id": "pcmcat748301108075",
+          "name": "Stocking Stuffers"
+        },
+        {
+          "id": "pcmcat1487279818011",
+          "name": "Mother's Day Gift Ideas"
+        },
+        {
+          "id": "pcmcat1487867427335",
+          "name": "Father's Day Gift Ideas"
+        },
+        {
+          "id": "pcmcat1487280226740",
+          "name": "Graduation Gift Ideas"
+        },
+        {
+          "id": "pcmcat1506957944904",
+          "name": "Christmas Gift Ideas"
+        },
+        {
+          "id": "pcmcat1540482602263",
+          "name": "Housewarming Gifts"
+        },
+        {
+          "id": "pcmcat84000050000",
+          "name": "Wedding Gifts"
+        },
+        {
+          "id": "pcmcat94300050028",
+          "name": "Birthday Gifts"
+        },
+        {
+          "id": "pcmcat84000050004",
+          "name": "Baby Shower Gifts"
+        },
+        {
+          "id": "pcmcat84000050001",
+          "name": "Anniversary Gifts"
+        },
+        {
+          "id": "pcmcat140000050037",
+          "name": "Computing Made Easy"
+        },
+        {
+          "id": "pcmcat140000050039",
+          "name": "Simple GPS Navigation"
+        },
+        {
+          "id": "pcmcat140000050040",
+          "name": "Playing Video Games"
+        },
+        {
+          "id": "pcmcat140000050041",
+          "name": "Watching HDTV"
+        },
+        {
+          "id": "pcmcat140000050042",
+          "name": "Enjoying Favorite Movies"
+        },
+        {
+          "id": "abcat0012000",
+          "name": "Him"
+        },
+        {
+          "id": "abcat0011000",
+          "name": "Her"
+        },
+        {
+          "id": "abcat0013000",
+          "name": "Teens"
+        },
+        {
+          "id": "abcat0014000",
+          "name": "Kids"
+        },
+        {
+          "id": "pcmcat84000050003",
+          "name": "Graduations"
+        },
+        {
+          "id": "abcat0020004",
+          "name": "Unique Gifts"
+        },
+        {
+          "id": "pcmcat111900050004",
+          "name": "Pink and Red Gifts"
+        },
+        {
+          "id": "abcat0020006",
+          "name": "Prepaid Cards"
+        },
+        {
+          "id": "pcmcat231900050003",
+          "name": "eGift Cards"
+        },
+        {
+          "id": "pcmcat253700050028",
+          "name": "QP Test Category"
+        },
+        {
+          "id": "pcmcat312700050000",
+          "name": "Our Favorite Gift Ideas"
+        },
+        {
+          "id": "pcmcat327600050005",
+          "name": "Easter Made Easy"
+        },
+        {
+          "id": "pcmcat327600050006",
+          "name": "Brunches Made Easy"
+        },
+        {
+          "id": "pcmcat332300050004",
+          "name": "Grads Gifting"
+        },
+        {
+          "id": "pcmcat748300579354",
+          "name": "Family Gift Ideas"
+        },
+        {
+          "id": "pcmcat1503499229560",
+          "name": "Explore Geek Gift Ideas"
+        },
+        {
+          "id": "pcmcat1505508677933",
+          "name": "Explore Top Tech Gift Ideas"
+        },
+        {
+          "id": "pcmcat1505761915169",
+          "name": "Explore Great Tech Gifts for Him"
+        },
+        {
+          "id": "pcmcat1507834419293",
+          "name": "Employee Picks"
+        },
+        {
+          "id": "pcmcat1508430906956",
+          "name": "Employee Picks"
+        },
+        {
+          "id": "pcmcat140000050035",
+          "name": "Capturing Photos & Videos"
+        },
+        {
+          "id": "pcmcat140000050036",
+          "name": "Listening to Digital Music"
+        }
+      ]
+    }
+  ]
+}
