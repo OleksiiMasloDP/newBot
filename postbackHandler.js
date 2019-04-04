@@ -1,6 +1,7 @@
 const callSendAPI = require('./callbackHandler'),
     letStartHelper = require('./helpers/letStartHelper'),
     shopListHelper = require('./helpers/shopListHelper'),
+    productsHelper = require('./helpers/productsHelper'),
     catalogHelper = require('./helpers/catalogHelper');
 
 module.exports = function postbackHandler(sender_psid, received_postback) {
@@ -23,7 +24,13 @@ module.exports = function postbackHandler(sender_psid, received_postback) {
             callSendAPI(sender_psid, response);
         });
         return;
-    } else if (payload === 'SHOP') {
+    } else if (payload.startsWith('CHOOSE_')) {
+        productsHelper.handle(payload, function (err, response) {
+            callSendAPI(sender_psid, response);
+        });
+        return;
+    }
+    else if (payload === 'SHOP') {
         response = shopListHelper();
     }
 

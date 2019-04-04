@@ -21,6 +21,8 @@ module.exports = function callSendAPI(sender_psid, response) {
             !err
         ) {
             console.log('message sent!')
+        }else if (body.error){
+            console.error('Unable send message' + body.error);
         }
         else {
             console.error("Unable to send message:" + err);

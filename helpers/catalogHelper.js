@@ -1,12 +1,39 @@
 const prepareCategories = function (obj, callback) {
-    for (let i = 0; i < obj.lenght; i++) {
-        console.log(obj[i]);
-    }
-    const respones = {};
-    callback(null, response)
+    const elements = obj.categories.map(item => {
+        const carousel = {};
+        carousel.title = item.name;
+        carousel.image = item.url;
+        carousel.id = item.id;
+        return {
+            "title": carousel.title,
+            "image_url": carousel.image,
+            "default_action": {
+                "type": "web_url",
+                "url": "https://petersfancybrownhats.com/view?item=103",
+                "webview_height_ratio": "tall",
+            },
+            "buttons": [
+                {
+                    "type": "postback",
+                    "title": "Choose " + carousel.title,
+                    "payload": "CHOOSE_" + carousel.id
+                }
+            ]
+        };
+    });
+    const response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": elements
+            }
+        }
+    };
+    callback(null, response);
 };
-module.export.prepareCategories = prepareCategories;
-module.export.handle = function (callbackFromHelper) {
+module.exports.prepareCategories = prepareCategories;
+module.exports.handle = function (callbackFromHelper) {
     const async = require('async');
     async.waterfall([
         function (callback) {
@@ -15,7 +42,12 @@ module.export.handle = function (callbackFromHelper) {
                 if (err) {
                     console.warn(err);
                     callback(err, null)
-                } else if (data.total === 0) {
+                } else if (!data && !err) {
+                    console.log('Data is undefiend');
+                    err = {msg: "data undifiend"};
+                    callback(err, null)
+                }
+                else if (data.total === 0) {
                     console.log('No categories found');
                     callback(null, data)
                 }
@@ -26,13 +58,6 @@ module.export.handle = function (callbackFromHelper) {
             });
         },
         prepareCategories
-        /*function (obj, callback) {
-            for (let i = 0; i < obj.length; i++) {
-                console.log(obj[i]);
-            }
-            const response = {};
-            callback(null, response)
-        }*/
     ], function (err, result) {
         callbackFromHelper(err, result)
     });
