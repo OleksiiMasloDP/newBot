@@ -2,7 +2,7 @@ const prepareProducts = function (obj, callback) {
     const elements = obj.products.map(item => {
         const carousel = {};
         carousel.title = item.name;
-        carousel.image = item.url;
+        carousel.image = item.image;
         carousel.price = item.salePrice;
         return {
             "title": carousel.title,
@@ -14,6 +14,11 @@ const prepareProducts = function (obj, callback) {
             },
             "buttons": [
                 {
+                    "type": "postback",
+                    "title": "Choose " + carousel.title,
+                    "payload": "CHOOSE_" + carousel.id
+                }
+                /*{
                     "type": "payment",
                     "title": "But Button",
                     "payload": "DEVELOPER_DEFINED_PAYLOAD",
@@ -35,7 +40,7 @@ const prepareProducts = function (obj, callback) {
                             }
                         ]
                     }
-                }
+                }*/
             ]
         };
     });
@@ -59,8 +64,7 @@ module.exports.handle = function (payload, callbackFromHelper) {
             function (callback) {
                 const bby = require('bestbuy')();
                 bby.products('(categoryPath.id=' + categorieId + ')', {
-                    show: 'salePrice,name',
-                    pageSize: 10
+                    show: 'salePrice,name,image'
                 }, function (err, data) {
                     if (err) {
                         console.warn(err);

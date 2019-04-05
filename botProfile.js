@@ -29,12 +29,12 @@ const request = require('request'),
                 "call_to_actions":[
                             {
                                 "type":"postback",
-                                "title":"Главное меню",
+                                "title":"Main Menu",
                                 "payload":"MAIN_MENU"
                             },
                             {
                                 "type":"postback",
-                                "title":"Каталог товаров",
+                                "title":"Catalog",
                                 "payload":"CATALOG"
                             }
                 ]

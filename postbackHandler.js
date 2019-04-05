@@ -30,10 +30,6 @@ module.exports = function postbackHandler(sender_psid, received_postback) {
         });
         return;
     }
-    else if (payload === 'SHOP') {
-        response = shopListHelper();
-    }
-
     // Send the message to acknowledge the postback
     callSendAPI(sender_psid, response);
 };

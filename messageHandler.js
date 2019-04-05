@@ -1,10 +1,25 @@
-const callSendAPI = require('./callbackHandler');
+const callSendAPI = require('./callbackHandler'),
+    catalogHelper = require('./helpers/catalogHelper');
 
 module.exports = function handleMessage(sender_psid, received_message) {
     let response;
+    let payload = received_message.payload;
+
+    if (received_message.text && payload === 'SHOP') {
+        catalogHelper.handle(function (err, response) {
+            callSendAPI(sender_psid, response);
+        });
+        return;
+    } else if (payload === 'MY_PURCHASES') {
+
+    } else if (payload === 'FAVORITES') {
+
+    } else if (payload === 'INVITE_FRIEND') {
+
+    }
 
     // Checks if the message contains text
-    if (received_message.text) {
+    /*if (received_message.text) {
         // Create the payload for a basic text message, which
         // will be added to the body of our request to the Send API
         response = {
@@ -39,7 +54,7 @@ module.exports = function handleMessage(sender_psid, received_message) {
             }
         }
     }
-
+*/
     // Send the response message
     callSendAPI(sender_psid, response);
 };
