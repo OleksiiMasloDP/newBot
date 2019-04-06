@@ -3,9 +3,9 @@ const callSendAPI = require('./callbackHandler'),
 
 module.exports = function handleMessage(sender_psid, received_message) {
     let response;
-    let payload = received_message.payload;
+    let payload = received_message.quick_reply.payload;
 
-    if (received_message.text && payload === 'SHOP') {
+    if (payload === 'SHOP') {
         catalogHelper.handle(function (err, response) {
             callSendAPI(sender_psid, response);
         });

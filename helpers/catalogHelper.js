@@ -2,11 +2,9 @@ const prepareCategories = function (obj, callback) {
     const elements = obj.categories.map(item => {
         const carousel = {};
         carousel.title = item.name;
-        carousel.image = item.url;
         carousel.id = item.id;
         return {
             "title": carousel.title,
-            "image_url": carousel.image,
             "default_action": {
                 "type": "web_url",
                 "url": "https://petersfancybrownhats.com/view?item=103",
